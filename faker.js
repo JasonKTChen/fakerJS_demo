@@ -1,5 +1,26 @@
 const { faker } = require("@faker-js/faker");
 
+// random number
+let number = faker.random.numeric();
+console.log(number);
+
+let uuid = faker.datatype.uuid();
+console.log(uuid);
+
+let word = faker.random.word();
+console.log(word);
+
+let words = faker.random.words(6);
+console.log(words);
+
+
+// date 
+let futureDate = faker.date.future();
+let recentDate = faker.date.recent();
+let weekday = faker.date.weekday();
+
+
+// create user profile
 function createRandomUser() {
   const sex = faker.name.sexType();
   const firstName = faker.name.firstName(sex);
@@ -18,7 +39,12 @@ function createRandomUser() {
   };
 }
 
-const user1 = createRandomUser();
-const user2 = createRandomUser();
-console.log("user1", user1);
-console.log("user2", user2);
+let users = []
+
+for (let i=1; i <= 1000; i++) {
+  users.push(createRandomUser());
+}
+
+fs.writeFileSync('users_1000.json', JSON.stringify(dataObj, null, '\t'));
+
+
